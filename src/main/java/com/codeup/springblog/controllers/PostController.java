@@ -1,31 +1,30 @@
 package com.codeup.springblog.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
+//@RequestMapping("/posts")  We can do RequestMapping if we dont want to add posts to every getMapping
+
 public class PostController {
 
     @GetMapping("/post")
     @ResponseBody
-    public String post() {
-        return "posts index page";
+    public String allPosts() {
+        return "Here are all the post: ";
     }
 
 
     @GetMapping("/posts/{id}")
     @ResponseBody
-    public String postWithID(@PathVariable String id){
-        return "View an " + id + " post";
+    public String onePost(@PathVariable long id){
+        return "Here is post number: " + id;
     }
 
     @GetMapping("/posts/create")
     @ResponseBody
-    public String postWithCreate(){
-        return "view the form for creating a post";
+    public String createPost(){
+        return "Here is the form to create a post!";
     }
 
     @PostMapping("/posts/create")

@@ -13,14 +13,14 @@ public class MathController {
 //    Adding
     @GetMapping("/add/{num1}/and/{num2}")
     @ResponseBody
-    public int add(@PathVariable int num1, @PathVariable int num2){
+    public double add(@PathVariable double num1, @PathVariable double num2){
         return num1 + num2;
     }
 
 
 // Subtracting
 
-    @GetMapping("/sub/{num3}/and/{num4}")
+    @GetMapping("/sub/{num3}/from/{num4}")
     @ResponseBody
     public int sub(@PathVariable int num3, @PathVariable int num4){
         return num3 - num4;
