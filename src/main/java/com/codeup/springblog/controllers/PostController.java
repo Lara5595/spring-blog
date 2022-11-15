@@ -21,17 +21,40 @@ public class PostController {
         return "Here is post number: " + id;
     }
 
+//    @GetMapping("/posts/create")
+//    @ResponseBody
+//    public String createPost(){
+//        return "Here is the form to create a post!";
+//    }
+
     @GetMapping("/posts/create")
     @ResponseBody
     public String createPost(){
-        return "Here is the form to create a post!";
+        return
+                "<h1>Testing Post Map</h1>\n" +
+                        "    <form method=\"post\" action=\"/posts/create\">\n" +
+                        "        <label for=\"word\">Press button to Test!:</label>\n" +
+                        "        <input type=\"text\" name=\"word\" id=\"word\">\n" +
+                        "        <button type=\"submit\">Testing PostMapping</button>\n" +
+                        "    </form>";
     }
+
+
+
 
     @PostMapping("/posts/create")
     @ResponseBody
-    public String postWithPost(){
-        return "Create a new post";
+    public String postWithPost(@RequestParam (name = "word") String word) {
+        return word;
     }
+
+
+
+//    @PostMapping("/posts/create")
+//    @ResponseBody
+//    public String postWithPost(){
+//        return "Create a new post";
+//    }
 
 
 
