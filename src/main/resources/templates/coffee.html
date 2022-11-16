@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <!--This makes thymeleaf available it goes inside the html tag-->
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Coffee</title>
-</head>
+<head th:replace="partials/partials.html :: head ('Coffee')"></head>
 <body>
+
+<nav th:replace="partials/partials.html :: bootstrap-nav"></nav>
+
   <h1>Coffee!</h1>
   <h2 th:unless="${selections}">Select your favored roast:</h2>
   <div th:if="${selections}">
