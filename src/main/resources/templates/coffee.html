@@ -7,8 +7,16 @@
 </head>
 <body>
   <h1>Coffee!</h1>
-  <h2>Select your favored roast:</h2>
-  <h2>You selected: <span th:text="${roast}"></span> roast!</h2>
+<!--  using th unless removes h2 if you select a roast and if you dont it will be there-->
+  <h2 th:unless="${roast}">Select your favored roast:</h2>
+
+<!--  th if - if it exist then put roast at the end -->
+  <h2 th:if="${roast}">You selected: <span th:text="${roast}"></span> roast!</h2>
+  <!-- We can make conditionals also -->
+  <div th:if="${roast}">
+      <p th:if="${roast} == 'dark'"> We have an excellent dark roast for you!</p>
+  </div>
+
   <ul>
       <li><a href="/coffee/dark">Dark Roast</a></li>
       <li><a href="/coffee/medium">Medium Roast</a></li>
