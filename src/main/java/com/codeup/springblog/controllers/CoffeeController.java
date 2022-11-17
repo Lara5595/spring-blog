@@ -19,7 +19,7 @@ public class CoffeeController {
 
     @GetMapping("/{roast}")
     public String roast(@PathVariable String roast, Model model){
-//        Generating and empty coffee ojbject
+//        Generating and empty coffee object
         Coffee selection = new Coffee(roast, "Cool Beans");
         Coffee selection2 = new Coffee(roast, "Coffee Bros");
 //        Using the coffee setter
