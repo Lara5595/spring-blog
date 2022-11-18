@@ -19,6 +19,8 @@
 <div th:if="${numberChosen}">
 <p>The number was <span th:text="${randomNum}"></span></p>
 <p>The number you chose <span th:text="${numberChosen}"></span></p>
+
+    <p th:if="${numberChosen == randomNum}"> Congrats! You Win</p>
 </div>
 
 
