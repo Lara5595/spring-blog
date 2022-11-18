@@ -2,12 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Show</title>
+    <title>Show One Post</title>
 </head>
 <body>
-
-<h1> I want to see this</h1>
-<p>This is the title:  <span th:text="${title}"></span></p>
-<p><span th:text="${body}"></span></p>
+<div th:if="${post}">
+    <h2 th:text="${post.title}"></h2>
+    <p th:text="${post.body}"></p>
+</div>
+<p th:unless="${post}">Could not find post</p>
 </body>
 </html>

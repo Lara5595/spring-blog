@@ -25,6 +25,7 @@
 <p>The number you chose <span th:text="${numberChosen}"></span></p>
 
     <p th:if="${numberChosen == randomNum}"> Congrats! You Win</p>
+    <p th:if="${numberChosen != randomNum}"> NO! You Lose</p>
 </div>
 
 <!--Using partial footer-->
