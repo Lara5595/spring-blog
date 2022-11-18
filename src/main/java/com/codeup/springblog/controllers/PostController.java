@@ -1,6 +1,7 @@
 package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
+import com.codeup.springblog.repositories.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,14 @@ import java.util.List;
 @RequestMapping("/posts")
 
 public class PostController {
+    //    We are creating a coffee repo and constructor from the coffee repo instance class
+
+    private final PostRepository postDao;
+
+    public PostController(PostRepository postDao){
+        this.postDao = postDao;
+    }
+
 
 //    @GetMapping("/post")
 //    @ResponseBody
@@ -72,6 +81,8 @@ public class PostController {
     public String postWithPost(@RequestParam (name = "word") String word) {
         return word;
     }
+
+
 
 
 
