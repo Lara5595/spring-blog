@@ -25,4 +25,15 @@ public class Post {
     public void setBody(String body) {
         this.body = body;
     }
+
+
+//    Constructor
+
+
+    public Post(String title, String body) {
+        this.title = title;
+        this.body = body;
+    }
+
+    public Post(){}
 }

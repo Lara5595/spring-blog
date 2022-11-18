@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Show</title>
 </head>
 <body>
 
+<h1> I want to see this</h1>
+<p>This is the title:  <span th:text="${title}"></span></p>
+<p><span th:text="${body}"></span></p>
 </body>
 </html>
