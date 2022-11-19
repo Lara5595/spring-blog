@@ -110,3 +110,6 @@ public class PostController {
 
 
 }
+
+
+// You can delete rows from tables in the post table
