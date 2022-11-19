@@ -55,13 +55,7 @@ public class PostController {
 
 
 
-//    @GetMapping("/posts/create")
-//    @ResponseBody
-//    public String createPost(){
-//        return "Here is the form to create a post!";
-//    }
-
-    @GetMapping("/posts/create")
+    @GetMapping("/posts/creates")
     @ResponseBody
     public String createPost(){
         return
@@ -76,15 +70,35 @@ public class PostController {
 
 
 
-    @PostMapping("/posts/create")
+    @PostMapping("/posts/creates")
     @ResponseBody
     public String postWithPost(@RequestParam (name = "word") String word) {
         return word;
     }
 
 
+//    Assigment Repositories and JPA
 
+//    Takes me to the create.html
+    @GetMapping("/create")
+    public String homepageBlog(){
+        return "posts/create";
+    }
 
+//    Creates new post
+    @PostMapping("/create/new")
+    public  String createPost(@RequestParam(name = "body") String body, @RequestParam(name = "title") String title){
+        Post post = new Post(body,title);
+        postDao.save(post);
+        return "posts/create";
+    }
+
+    @GetMapping("/create/all-post")
+    public String allPostsBlog(Model model){
+        List<Post> posts = postDao.findAll();
+        model.addAttribute("posts", posts);
+        return "posts/create";
+    }
 
 //    @PostMapping("/posts/create")
 //    @ResponseBody
