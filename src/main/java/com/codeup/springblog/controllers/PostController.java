@@ -87,11 +87,19 @@ public class PostController {
 
 //    Creates new post
     @PostMapping("/create/new")
+//    This is the one that sends you to the all-post
     public  String createPost(@RequestParam(name = "body") String body, @RequestParam(name = "title") String title){
         Post post = new Post(body,title);
         postDao.save(post);
         return "redirect:/posts/create/all-post";
     }
+
+//    This is rick roll
+//    public  String createPost(@RequestParam(name = "body") String body, @RequestParam(name = "title") String title){
+//        Post post = new Post(body,title);
+//        postDao.save(post);
+//        return "redirect:https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+//    }
 
     @GetMapping("/create/all-post")
     public String allPostsBlog(Model model){
