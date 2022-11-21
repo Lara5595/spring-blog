@@ -90,7 +90,7 @@ public class PostController {
     public  String createPost(@RequestParam(name = "body") String body, @RequestParam(name = "title") String title){
         Post post = new Post(body,title);
         postDao.save(post);
-        return "redirect:/posts/create";
+        return "redirect:/posts/create/all-post";
     }
 
     @GetMapping("/create/all-post")
