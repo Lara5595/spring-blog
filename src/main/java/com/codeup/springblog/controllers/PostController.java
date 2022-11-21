@@ -22,12 +22,6 @@ public class PostController {
     }
 
 
-//    @GetMapping("/post")
-//    @ResponseBody
-//    public String allPosts() {
-//        return "Here are all the post: ";
-//    }
-
     @GetMapping()
     public String allPosts(Model model) {
         Post post1 = new Post(1, "First", "This is my first post!!");
@@ -55,7 +49,7 @@ public class PostController {
 
 
 
-    @GetMapping("/posts/creates")
+    @GetMapping("/creates")
     @ResponseBody
     public String createPost(){
         return
@@ -70,7 +64,7 @@ public class PostController {
 
 
 
-    @PostMapping("/posts/creates")
+    @PostMapping("/creates")
     @ResponseBody
     public String postWithPost(@RequestParam (name = "word") String word) {
         return word;
@@ -94,8 +88,9 @@ public class PostController {
         return "redirect:/posts/create/all-post";
     }
 
-//    This is rick roll
-//    public  String createPost(@RequestParam(name = "body") String body, @RequestParam(name = "title") String title){
+////    This is rick roll
+//        @PostMapping("/create/new")
+//        public  String createPost(@RequestParam(name = "body") String body, @RequestParam(name = "title") String title){
 //        Post post = new Post(body,title);
 //        postDao.save(post);
 //        return "redirect:https://www.youtube.com/watch?v=dQw4w9WgXcQ";
@@ -108,16 +103,8 @@ public class PostController {
         return "posts/allPost";
     }
 
-//    @PostMapping("/posts/create")
-//    @ResponseBody
-//    public String postWithPost(){
-//        return "Create a new post";
-//    }
 
 
+} // End of PostController
 
 
-}
-
-
-// You can delete rows from tables in the post table

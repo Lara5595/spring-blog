@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
+<head th:replace="partials/partials.html :: head (title)" >
     <meta charset="UTF-8">
-    <title>Spring_Blog</title>
+    <title th:text="${title}">Spring Blog</title>
 </head>
 <body>
+<nav th:replace="partials/partials.html :: bootstrap-nav"></nav>
+
+
 <fieldset>
     <legend>Create A Post</legend>
     <!--    we use coffee/new that we created on  coffee controller-->
@@ -17,7 +20,7 @@
     </form>
 </fieldset>
 
-
+<footer th:replace="partials/partials.html :: bootstrap-footer"></footer>
 
 </body>
 </html>
