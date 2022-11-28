@@ -2,27 +2,132 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:fragment="head (title)">
     <meta charset="UTF-8">
-    <title th:text="${title}">Partials</title>
-<!--    Bootstrap-->
+    <title th:text="${title}">All Blogs Partials</title>
+    <!--    Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-<!--    Thyme leaf css-->
-    <link rel="stylesheet" href="/css/allPost.css">
+
+
+    <!--    Thyme leaf css-->
+    <link rel="stylesheet" href="/css/blog.css">
 </head>
 <body>
-<nav th:fragment="bootstrap-nav" class="navbar navbar-light bg-light justify-content-between">
-    <a class="navbar-brand">Navbar</a>
-    <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+
+<!--Nav bar-->
+<nav th:fragment="bootstrap-nav" class="navbar navbar-expand-md bg-white navbar-white sticky-top">
+    <a class="navbar-brand" href="/posts/create">Blog</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="true">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navb" class="navbar-collapse collapse hide">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/posts/create">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="create/all-post">View Your post</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/posts/users">Create a user</a>
+            </li>
+        </ul>
+    </div>
+    <ul class="nav navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#"><span class="fas fa-user"></span> Sign Up</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#"><span class="fas fa-sign-in-alt"></span> Login</a>
+        </li>
+    </ul>
 </nav>
 
-<header th:fragment="bootstrap-header">
-    <div class="p-5 text-center bg-light">
-        <h1 class="mb-3">Roll the Dice</h1>
+
+<!-- Sidebar -->
+<nav th:fragment="bootstrap-side" id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+    <div class="position-sticky">
+        <div class="list-group list-group-flush mx-3 mt-4">
+            <h6 class="mb-3">Feeds</h6>
+            <a href="blogs/allBlogs" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+                <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Home</span>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple active">
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>Popular</span>
+            </a>
+            <h6 class="mt-3">Topics</h6>
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+                    class="fas fa-lock fa-fw me-3"></i><span>Gaming</span></a>
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+                    class="fas fa-chart-line fa-fw me-3"></i><span>Sports</span></a>
+
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+                    class="fas fa-users fa-fw me-3"></i><span>Crypo</span></a>
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+                    class="fas fa-users fa-fw me-3"></i><span>More</span></a>
+        </div>
     </div>
-</header>
+</nav>
+<!-- Sidebar -->
+
+<section th:fragment="bootstrap-profile"  style="background-color: white;">
+    <div class="row d-flex justify-content-start align-items-start h-50">
+        <div class="col col-lg-6 mb-4 mb-lg-0">
+            <div class="card mb-3" style="border-radius: .5rem;">
+                <div class="row g-0">
+                    <div class="col-md-4 gradient-custom text-center text-black"
+                         style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                             alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+                        <h5>David Lara</h5>
+                        <p>Web Developer In Training</p>
+                        <i class="far fa-edit mb-5"></i>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body p-4">
+                            <h6>Information</h6>
+                            <hr class="mt-0 mb-4">
+                            <div class="row pt-1">
+                                <div class="col-6 mb-3">
+                                    <h6>Email</h6>
+                                    <p class="text-muted">info@example.com</p>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <h6>Phone</h6>
+                                    <p class="text-muted">123 456 789</p>
+                                </div>
+                            </div>
+                            <h6>Projects</h6>
+                            <hr class="mt-0 mb-4">
+                            <div class="row pt-1">
+                                <div class="col-6 mb-3">
+                                    <h6>Recent</h6>
+                                    <p class="text-muted">Blog Space</p>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <h6>Most Viewed</h6>
+                                    <p class="text-muted">CodeUp</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-start">
+                                <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
+                                <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
+                                <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
 
 
 <footer th:fragment="bootstrap-footer" class="bg-light text-center text-lg-start">
@@ -33,5 +138,8 @@
     </div>
     <!-- Copyright -->
 </footer>
+
+
+
 </body>
 </html>
