@@ -39,6 +39,7 @@ public class CoffeeController {
     }
 
 
+
     @PostMapping
     public String signUp(@RequestParam(name="email") String email, Model model){
         model.addAttribute("email", email);

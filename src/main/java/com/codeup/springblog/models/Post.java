@@ -46,7 +46,15 @@ public class Post {
     }
 
 
-//    Many to one
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    //    Many to one
     @ManyToOne
     private User user;
 
@@ -66,5 +74,11 @@ public class Post {
         this.id = id;
         this.title = title;
         this.body = body;
+    }
+
+    public Post(String title, String body, User user) {
+        this.title = title;
+        this.body = body;
+        this.user = user;
     }
 }

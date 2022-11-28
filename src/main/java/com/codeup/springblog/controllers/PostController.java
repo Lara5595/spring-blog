@@ -80,18 +80,12 @@ public class PostController {
 
 //    Takes me to the create.html
     @GetMapping("/create")
-    public String homepageBlog(){
+    public String homepageBlog(Model model){
+        List<User>users = userDao.findAll();
+        model.addAttribute("users", users);
         return "posts/create";
     }
 
-//    Creates new post
-    @PostMapping("/create/new")
-//    This is the one that sends you to the all-post
-    public  String createPost(@RequestParam(name = "body") String body, @RequestParam(name = "title") String title){
-        Post post = new Post(body,title);
-        postDao.save(post);
-        return "redirect:/posts/create/all-post";
-    }
 
 ////    This is rick roll
 //        @PostMapping("/create/new")
@@ -118,7 +112,7 @@ public class PostController {
     }
 
     @PostMapping("/users")
-    public String insertSupplier(@RequestParam(name = "email")String email,@RequestParam(name = "username")String username,@RequestParam(name = "password")String password) {
+    public String insertUser(@RequestParam(name = "email")String email,@RequestParam(name = "username")String username,@RequestParam(name = "password")String password) {
         User user = new User(email,username,password);
         userDao.save(user);
         return "redirect:/posts/users";
@@ -126,14 +120,18 @@ public class PostController {
 
 
 
-//    @PostMapping("/new")
-//    public String addCoffee(@RequestParam(name="roast") String roast, @RequestParam(name="origin") String origin, @RequestParam(name="brand") String brand, @RequestParam(name="supplier") long id){
-//        User users = userDao.findById(id);
-//        User user = new User(email, username, password, supplier);
-//        coffeeDao.save(coffee);
-//        return "redirect:/coffee/all-coffees";
-//    }
+    @PostMapping("/new")
+    public String addPostWithUser(@RequestParam(name="title") String title, @RequestParam(name="body") String body, @RequestParam(name="user") long id){
+        User user = userDao.findById(id);
+        Post post = new Post(title, body, user);
+        postDao.save(post);
+        return "redirect:/posts/create/all-post";
+    }
+
 
 } // End of PostController
+
+
+
 
 

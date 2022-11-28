@@ -78,4 +78,16 @@ public class User {
         this.username = username;
         this.password = password;
     }
+
+
+    public User(long id, String email, String username, String password, List<Post> posts) {
+        this.id = id;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.posts = posts;
+    }
+
+
+
 }

@@ -16,9 +16,12 @@
         <div class="card">
             <span th:text="${post.body}"></span>
             <span th:text="${post.title}"></span>
+            <span th:text="${post.user.getEmail()}"></span>
+
         </div>
     </div>
 </div>
+
 
 
 <footer th:replace="partials/partials.html :: bootstrap-footer"></footer>
