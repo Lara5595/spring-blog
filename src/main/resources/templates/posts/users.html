@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials/partials.html :: head ('Users')" >
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+
+<h1>Add a user</h1>
+
+<form action="/coffee/users" method="post">
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username">
+    <label for="password">Password:</label>
+    <input type="text" id="password" name="password">
+
+    <input type="submit" value="submit">
+</form>
+
+
+</body>
+</html>
