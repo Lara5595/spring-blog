@@ -1,6 +1,7 @@
 package com.codeup.springblog.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -19,6 +20,9 @@ public class User {
     @Column(nullable = false, length = 50)
     private String  password;
 
+//    This is for the relationship exercise
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Post> posts;
 
 //    Getters and setters
 

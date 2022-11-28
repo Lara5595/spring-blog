@@ -45,6 +45,12 @@ public class Post {
         this.id = id;
     }
 
+
+//    Many to one
+    @ManyToOne
+    private User user;
+
+
     //    Constructor
 
     public Post() {
