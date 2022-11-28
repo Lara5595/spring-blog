@@ -2,3 +2,20 @@
     display: flex;
     justify-content: center;
 }
+
+
+.postMiddleForm {
+    display: grid;
+    place-content: center;
+}
+
+
+.centerText {
+    display: flex;
+    justify-content: center;
+}
+
+.centerForm {
+    display: flex;
+    justify-content: center;
+}

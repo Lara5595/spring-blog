@@ -8,22 +8,9 @@
 <body>
 <nav th:replace="partials/partials.html :: bootstrap-nav"></nav>
 
-
-
-
-<div class="rowA">
-    <div class="column" th:each="post : ${posts}">
-        <div class="card">
-            <span th:text="${post.body}"></span>
-            <span th:text="${post.title}"></span>
-            <span th:text="${post.user.getEmail()}"></span>
-
-        </div>
-    </div>
-</div>
-
-
-
+<div th:replace="partials/partials.html :: bootstrap-cards"></div>
+<br>
+<br>
 <footer th:replace="partials/partials.html :: bootstrap-footer"></footer>
 
 </body>

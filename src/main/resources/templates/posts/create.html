@@ -8,9 +8,8 @@
 <nav th:replace="partials/partials.html :: bootstrap-nav"></nav>
 
 
-<fieldset>
-    <legend>Create A Post</legend>
-
+<fieldset class="postMiddleForm">
+    <legend th:replace="partials/partials.html :: bootstrap-jumbotron"></legend>
     <form action="/posts/new" method="post">
         <label for="body">Write your Post:</label>
         <input type="text" id="body" name="body">
@@ -26,9 +25,6 @@
         </select>
 
         <input type="submit" value="submit">
-
-
-
     </form>
 </fieldset>
 
