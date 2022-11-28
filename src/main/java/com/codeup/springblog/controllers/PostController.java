@@ -1,7 +1,9 @@
 package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
+import com.codeup.springblog.models.User;
 import com.codeup.springblog.repositories.PostRepository;
+import com.codeup.springblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +19,13 @@ public class PostController {
 
     private final PostRepository postDao;
 
-    public PostController(PostRepository postDao){
-        this.postDao = postDao;
-    }
+    private final UserRepository userDao;
 
+
+    public PostController(PostRepository postDao, UserRepository userDao) {
+        this.postDao = postDao;
+        this.userDao = userDao;
+    }
 
     @GetMapping()
     public String allPosts(Model model) {
@@ -104,6 +109,30 @@ public class PostController {
     }
 
 
+    //    relationships exercise
+
+
+    @GetMapping("/users")
+    public String usersHome(){
+        return "/posts/users";
+    }
+
+    @PostMapping("/users")
+    public String insertSupplier(@RequestParam(name = "email")String email,@RequestParam(name = "username")String username,@RequestParam(name = "password")String password) {
+        User user = new User(email,username,password);
+        userDao.save(user);
+        return "redirect:/posts/users";
+    }
+
+
+
+//    @PostMapping("/new")
+//    public String addCoffee(@RequestParam(name="roast") String roast, @RequestParam(name="origin") String origin, @RequestParam(name="brand") String brand, @RequestParam(name="supplier") long id){
+//        User users = userDao.findById(id);
+//        User user = new User(email, username, password, supplier);
+//        coffeeDao.save(coffee);
+//        return "redirect:/coffee/all-coffees";
+//    }
 
 } // End of PostController
 

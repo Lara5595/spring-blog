@@ -15,18 +15,6 @@ import java.util.List;
 @RequestMapping("/coffee")
 public class CoffeeController {
 
-    private final UserRepository userDao;
-    private final PostRepository postDao;
-
-    public CoffeeController(UserRepository userDao, PostRepository postDao) {
-        this.userDao = userDao;
-        this.postDao = postDao;
-    }
-
-
-
-
-
 
 
     @GetMapping
@@ -57,22 +45,6 @@ public class CoffeeController {
         return "coffee";
     }
 
-
-
-//    relationships exercise
-
-
-    @GetMapping("/users")
-    public String usersHome(){
-        return "/posts/users";
-    }
-
-    @PostMapping("/users")
-    public String insertSupplier(@RequestParam(name = "email")String email,@RequestParam(name = "username")String username,@RequestParam(name = "password")String password) {
-        User user = new User(email,username,password);
-        userDao.save(user);
-        return "redirect:/posts/allPost";
-    }
 
 
 }
