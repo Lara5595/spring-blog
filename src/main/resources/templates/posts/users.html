@@ -10,18 +10,20 @@
 
 <h1 class="centerText mt-5">Add a user</h1>
 
-<form class="centerForm mt-5" action="/posts/users" method="post">
+<form class="centerForm mt-5" action="/posts/users" method="post" th:object="${user}">
     <label for="email">Email:</label>
-    <input type="text" id="email" name="email">
+    <input type="text" id="email" name="email" th:field="*{email}">
     <label for="username">Username:</label>
-    <input type="text" id="username" name="username">
+    <input type="text" id="username" name="username" th:field="*{username}">
     <label for="password">Password:</label>
-    <input type="text" id="password" name="password">
-
-
+    <input type="text" id="password" name="password" th:field="*{password}">
 
     <input type="submit" value="submit">
 </form>
+
+
+
+
 
 
 </body>

@@ -27,74 +27,29 @@ public class PostController {
         this.userDao = userDao;
     }
 
-    @GetMapping()
-    public String allPosts(Model model) {
-        Post post1 = new Post(1, "First", "This is my first post!!");
-        Post post2 = new Post(2, "Second", "Hey everyone, I'm baaaack!!");
-        List<Post> allPosts = new ArrayList<>(List.of(post1, post2));
-        model.addAttribute("allPosts", allPosts);
-        return "/posts/index";
-    }
-
-    @GetMapping("/{id}")
-    public String onePost(@PathVariable long id, Model model) {
-        Post post1 = new Post(1, "First", "This is my first post!");
-        Post post2 = new Post(2, "Second", "Hey everyone, I'm back");
-        Post post3 = new Post(3, "Yo", "heye heye heyeee");
-        List<Post> allPosts = new ArrayList<>(List.of(post1, post2, post3));
-        Post post = null;
-        for(Post userPost : allPosts) {
-            if(userPost.getId() == id) {
-                post = userPost;
-            }
-        }
-        model.addAttribute("post", post);
-        return "posts/show";
-    }
-
-
-
-    @GetMapping("/creates")
-    @ResponseBody
-    public String createPost(){
-        return
-                "<h1>Testing Post Map</h1>\n" +
-                        "    <form method=\"post\" action=\"/posts/create\">\n" +
-                        "        <label for=\"word\">Press button to Test!:</label>\n" +
-                        "        <input type=\"text\" name=\"word\" id=\"word\">\n" +
-                        "        <button type=\"submit\">Testing PostMapping</button>\n" +
-                        "    </form>";
-    }
-
-
-
-
-    @PostMapping("/creates")
-    @ResponseBody
-    public String postWithPost(@RequestParam (name = "word") String word) {
-        return word;
-    }
-
 
 //    Assigment Repositories and JPA
 
-//    Takes me to the create.html
+//    Takes me to the create.html which is main page that says Create your post
     @GetMapping("/create")
     public String homepageBlog(Model model){
         List<User>users = userDao.findAll();
         model.addAttribute("users", users);
+        model.addAttribute("post", new Post());
         return "posts/create";
     }
 
 
-////    This is rick roll
-//        @PostMapping("/create/new")
-//        public  String createPost(@RequestParam(name = "body") String body, @RequestParam(name = "title") String title){
-//        Post post = new Post(body,title);
-//        postDao.save(post);
-//        return "redirect:https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-//    }
+    // This lets you add a post i refactor it to form model binding also the html
+    @PostMapping("/new")
+    public String addPostWithUser(@ModelAttribute Post post){
+        postDao.save(post);
+        return "redirect:/posts/create/all-post";
+    }
 
+
+
+//    This lets you view all your post
     @GetMapping("/create/all-post")
     public String allPostsBlog(Model model){
         List<Post> posts = postDao.findAll();
@@ -106,27 +61,44 @@ public class PostController {
     //    relationships exercise
 
 
+//    This takes you to the page where you can create a user refactor to model binding
     @GetMapping("/users")
-    public String usersHome(){
+    public String usersHome(Model model){
+        model.addAttribute("user",new  User());
         return "/posts/users";
     }
 
+
     @PostMapping("/users")
-    public String insertUser(@RequestParam(name = "email")String email,@RequestParam(name = "username")String username,@RequestParam(name = "password")String password) {
-        User user = new User(email,username,password);
+    public String insertUser(@ModelAttribute User user) {
         userDao.save(user);
         return "redirect:/posts/users";
     }
 
 
 
-    @PostMapping("/new")
-    public String addPostWithUser(@RequestParam(name="title") String title, @RequestParam(name="body") String body, @RequestParam(name="user") long id){
-        User user = userDao.findById(id);
-        Post post = new Post(title, body, user);
-        postDao.save(post);
-        return "redirect:/posts/create/all-post";
+//    Edit your post
+
+    @GetMapping("/edit")
+    public String editHome(){
+        return "/posts/edit";
     }
+
+    @GetMapping("/{id}/edit")
+    public String edit(Model model, @PathVariable long id){
+        Post post = postDao.findById(id);
+        model.addAttribute("post", post);
+        return "/posts/edit";
+    }
+
+
+    @PostMapping("/{Id}/edit")
+    public String editPost(@ModelAttribute Post post){
+        postDao.save(post);
+        return "redirect:/posts/create";
+    }
+
+
 
 
 } // End of PostController

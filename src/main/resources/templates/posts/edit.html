@@ -1,34 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="partials/partials.html :: head ('Create A Post')" >
+<head>
     <meta charset="UTF-8">
-    <title th:text="${title}">Spring Blog</title>
+    <title>Edit your post</title>
 </head>
 <body>
 <nav th:replace="partials/partials.html :: bootstrap-nav"></nav>
 
 
+<h1>Edit</h1>
 <fieldset class="postMiddleForm">
     <legend th:replace="partials/partials.html :: bootstrap-jumbotron"></legend>
-    <form action="/posts/new" method="post" th:object="${post}">
+    <form th:action="@{/posts/{Id}/edit(id=${post.id})}" method="post" th:object="${post}">
         <label for="body">Write your Post:</label>
         <input type="text" id="body" name="body" th:field="*{body}">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" th:field="*{title}">
 
-        <select name="user" id="user" th:field="*{user}">
-            <option
-                    th:each="user : ${users}"
-                    th:value="${user.getId()}"
-                    th:text="${user.getUsername()}">
-            </option>
-        </select>
-
         <input type="submit" value="submit">
     </form>
 </fieldset>
 
-<footer th:replace="partials/partials.html :: bootstrap-footer"></footer>
-
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>
