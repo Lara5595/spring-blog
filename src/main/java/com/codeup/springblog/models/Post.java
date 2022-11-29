@@ -56,6 +56,7 @@ public class Post {
 
     //    Many to one
     @ManyToOne
+//    @JoinColumn(name = "user_id") It worked without it but it the walkthrough they used it
     private User user;
 
 

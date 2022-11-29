@@ -11,7 +11,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 80)
+
+//    Unique = true does not let duplicates
+    @Column(nullable = false, length = 80, unique = true)
     private String email;
 
     @Column(nullable = false, length = 50)
