@@ -64,7 +64,7 @@ public class PostController {
 //    This takes you to the page where you can create a user refactor to model binding
     @GetMapping("/users")
     public String usersHome(Model model){
-        model.addAttribute("user",new  User());
+        model.addAttribute("user", new  User());
         return "/posts/users";
     }
 
@@ -79,11 +79,6 @@ public class PostController {
 
 //    Edit your post
 
-    @GetMapping("/edit")
-    public String editHome(){
-        return "/posts/edit";
-    }
-
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable long id){
         Post post = postDao.findById(id);
@@ -92,10 +87,11 @@ public class PostController {
     }
 
 
-    @PostMapping("/{Id}/edit")
-    public String editPost(@ModelAttribute Post post){
+    @PostMapping("/{id}/edit")
+    public String editPost(@ModelAttribute Post post, @PathVariable long id){
         postDao.save(post);
-        return "redirect:/posts/create";
+
+        return "redirect:/posts/create/all-post";
     }
 
 

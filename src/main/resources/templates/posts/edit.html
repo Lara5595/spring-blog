@@ -11,9 +11,10 @@
 <h1>Edit</h1>
 <fieldset class="postMiddleForm">
     <legend th:replace="partials/partials.html :: bootstrap-jumbotron"></legend>
-    <form th:action="@{/posts/{Id}/edit(id=${post.id})}" method="post" th:object="${post}">
+    <form th:action="@{|/posts/${post.id}/edit|}" method="post" th:object="${post}">
         <label for="body">Write your Post:</label>
         <input type="text" id="body" name="body" th:field="*{body}">
+        <input type="hidden" id="user" name="user" th:field="*{user.id}">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" th:field="*{title}">
 

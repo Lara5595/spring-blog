@@ -30,9 +30,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="/posts/users">Create a user</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/posts/edit">Edit</a>
-            </li>
         </ul>
     </div>
     <ul class="nav navbar-nav">
@@ -86,10 +83,10 @@
 <div th:fragment="bootstrap-cards" class="rowA">
     <div class="column" th:each="post : ${posts}">
         <div class="card">
-            <span th:text="${post.body}"></span>
             <span th:text="${post.title}"></span>
+            <span th:text="${post.body}"></span>
             <span th:text="${post.user.getEmail()}"></span>
-
+            <button> <a th:href="@{|/posts/${post.id}/edit|}">Edit</a> </button>
         </div>
     </div>
 </div>
