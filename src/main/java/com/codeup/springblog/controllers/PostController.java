@@ -28,6 +28,14 @@ public class PostController {
     }
 
 
+
+//    Home Page
+    @GetMapping()
+    public String home(){
+        return "posts/homePage";
+    }
+
+
 //    Assigment Repositories and JPA
 
 //    Takes me to the create.html which is main page that says Create your post

@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
+<head th:replace="partials/partials.html :: head ('edit')" >
     <meta charset="UTF-8">
-    <title>Edit your post</title>
-</head>
+    <title th:text="${title}">edit</title>
 <body>
 <nav th:replace="partials/partials.html :: bootstrap-nav"></nav>
 
