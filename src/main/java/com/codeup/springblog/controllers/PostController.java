@@ -60,6 +60,7 @@ public class PostController {
 //    This lets you view all your post
     @GetMapping("/create/all-post")
     public String allPostsBlog(Model model){
+
         List<Post> posts = postDao.findAll();
         model.addAttribute("posts", posts);
         return "posts/allPost";
