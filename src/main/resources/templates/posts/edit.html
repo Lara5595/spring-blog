@@ -14,6 +14,7 @@
     <form th:action="@{|/posts/${post.id}/edit|}" method="post" th:object="${post}">
         <label for="body">Write your Post:</label>
         <input type="text" id="body" name="body" th:field="*{body}">
+<!--        We added hidden type for user so it can get the user id and now show it -->
         <input type="hidden" id="user" name="user" th:field="*{user.id}">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" th:field="*{title}">

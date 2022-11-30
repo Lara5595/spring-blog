@@ -90,7 +90,6 @@ public class PostController {
     @PostMapping("/{id}/edit")
     public String editPost(@ModelAttribute Post post, @PathVariable long id){
         postDao.save(post);
-
         return "redirect:/posts/create/all-post";
     }
 

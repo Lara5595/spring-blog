@@ -86,7 +86,7 @@
             <span th:text="${post.title}"></span>
             <span th:text="${post.body}"></span>
             <span th:text="${post.user.getEmail()}"></span>
-            <button> <a th:href="@{|/posts/${post.id}/edit|}">Edit</a> </button>
+             <a th:href="@{|/posts/${post.id}/edit|}"><button>Edit </button></a>
         </div>
     </div>
 </div>
