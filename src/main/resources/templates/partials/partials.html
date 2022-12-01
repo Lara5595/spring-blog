@@ -33,7 +33,7 @@
     </div>
 
         <form th:action="@{/logout}" th:method="post">
-            <button>Logout</button>
+            <button id="logout">Logout</button>
         </form>
 </nav>
 
@@ -82,6 +82,14 @@
     </div>
 </div>
 
+<!--Jumbotron-->
+
+<div th:fragment="bootstrap-jumbotron3" class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4 mt-5 mb-5 d-flex justify-content-center">Delete Your Post</h1>
+    </div>
+</div>
+
 
 <!--Cards-->
 <div th:fragment="bootstrap-cards" class="rowA">
@@ -91,6 +99,8 @@
             <span th:text="${post.body}"></span>
             <span th:text="${post.user.getEmail()}"></span>
              <a th:href="@{|/posts/${post.id}/edit|}"><button>Edit </button></a>
+             <a th:href="@{|/posts/${post.id}/delete|}"><button>Delete </button></a>
+
         </div>
     </div>
 </div>

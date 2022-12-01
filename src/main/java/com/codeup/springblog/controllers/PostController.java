@@ -4,6 +4,7 @@ import com.codeup.springblog.models.Post;
 import com.codeup.springblog.models.User;
 import com.codeup.springblog.repositories.PostRepository;
 import com.codeup.springblog.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -51,6 +52,8 @@ public class PostController {
     // This lets you add a post i refactor it to form model binding also the html
     @PostMapping("/new")
     public String addPostWithUser(@ModelAttribute Post post){
+        User user = userDao.findById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+        post.setUser(user);
         postDao.save(post);
         return "redirect:/posts/create/all-post";
     }
@@ -86,6 +89,24 @@ public class PostController {
     }
 
 
+
+//    Delete button
+
+
+
+    @GetMapping("/{id}/delete")
+    public String delete(Model model, @PathVariable long id){
+        Post post = postDao.findById(id);
+        model.addAttribute("post", post);
+        return "/posts/delete";
+    }
+@PostMapping("/{id}/delete")
+public String deletePost(@ModelAttribute("buyer") Post post, Model model){
+    model.addAttribute("post", new Post());
+    postDao.delete(post);
+    return "redirect:/posts/create/all-post";
+
+}
 
 
 } // End of PostController
