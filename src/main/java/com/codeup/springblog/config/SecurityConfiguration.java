@@ -15,8 +15,8 @@ public class SecurityConfiguration {
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
-                .antMatchers("/posts/create", "/posts/{post.id}/edit", "/posts/create/all-post").authenticated()
-                .antMatchers("/", "/register", "/posts", "/posts/{id}").permitAll()
+                .antMatchers("/posts/create", "/posts/{post.id}/edit", "/posts/create/all-post", "/posts").authenticated()
+                .antMatchers("/", "/register", "/posts/{id}").permitAll()
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/posts")
                 .and().logout()
                 .and().httpBasic();
@@ -31,6 +31,7 @@ public class SecurityConfiguration {
     }
 
 
+// This is if you don't want a password encoder\
 
 //    @Bean
 //    public PasswordEncoder passwordEncoder(){
