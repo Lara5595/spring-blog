@@ -67,23 +67,6 @@ public class PostController {
     }
 
 
-    //    relationships exercise
-
-
-//    This takes you to the page where you can create a user refactor to model binding
-    @GetMapping("/users")
-    public String usersHome(Model model){
-        model.addAttribute("user", new  User());
-        return "/posts/users";
-    }
-
-
-    @PostMapping("/users")
-    public String insertUser(@ModelAttribute User user) {
-        userDao.save(user);
-        return "redirect:/posts/users";
-    }
-
 
 
 //    Edit your post

@@ -13,13 +13,13 @@ public class User {
 
 
 //    Unique = true does not let duplicates
-    @Column(nullable = false, length = 80, unique = true)
+    @Column(nullable = false, length = 80)
     private String email;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 50, unique = true)
     private String username;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false)
     private String  password;
 
 //    This is for the relationship exercise
@@ -74,21 +74,17 @@ public class User {
         this.password = password;
     }
 
-    public User(long id, String email, String username, String password) {
+
+    public User(long id, String username, String email, String password) {
         this.id = id;
-        this.email = email;
         this.username = username;
+        this.email = email;
         this.password = password;
     }
 
 
-    public User(long id, String email, String username, String password, List<Post> posts) {
-        this.id = id;
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.posts = posts;
-    }
+
+
 
 
 

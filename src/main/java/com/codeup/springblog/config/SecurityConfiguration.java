@@ -17,18 +17,25 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests()
                 .antMatchers("/posts/create", "/posts/{post.id}/edit", "/posts/create/all-post").authenticated()
                 .antMatchers("/", "/register", "/posts", "/posts/{id}").permitAll()
-                .and().formLogin()
+                .and().formLogin().loginPage("/login").defaultSuccessUrl("/posts")
+                .and().logout()
                 .and().httpBasic();
-//        We added .login page, so we can use our login page and redirect to posts
-        http.formLogin().loginPage("/login").defaultSuccessUrl("/posts").and().logout();
-        http.httpBasic();
         return http.build();
     }
+
+
 
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
+
+
+//    @Bean
+//    public PasswordEncoder passwordEncoder(){
+//        return NoOpPasswordEncoder.getInstance();
+//    }
 
 
 
