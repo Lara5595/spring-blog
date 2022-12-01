@@ -95,7 +95,7 @@
 <div th:fragment="bootstrap-cards" class="rowA">
     <div class="column" th:each="post : ${posts}">
         <div class="card">
-            <span th:text="${post.title}"></span>
+            <h5> <span th:text="${post.title}"></span><br><br>  Created By: <span th:text="${post.user.getUsername()}"></span></h5>
             <span th:text="${post.body}"></span>
             <span th:text="${post.user.getEmail()}"></span>
              <a th:href="@{|/posts/${post.id}/edit|}"><button>Edit </button></a>

@@ -4,6 +4,8 @@ import com.codeup.springblog.models.Post;
 import com.codeup.springblog.models.User;
 import com.codeup.springblog.repositories.PostRepository;
 import com.codeup.springblog.repositories.UserRepository;
+import com.codeup.springblog.services.Utils;
+import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,7 +54,8 @@ public class PostController {
     // This lets you add a post i refactor it to form model binding also the html
     @PostMapping("/new")
     public String addPostWithUser(@ModelAttribute Post post){
-        User user = userDao.findById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+//        code for the setting user is in utils
+        User user = Utils.currentUser();
         post.setUser(user);
         postDao.save(post);
         return "redirect:/posts/create/all-post";
@@ -84,6 +87,8 @@ public class PostController {
 
     @PostMapping("/{id}/edit")
     public String editPost(@ModelAttribute Post post, @PathVariable long id){
+        User user = Utils.currentUser();
+        post.setUser(user);
         postDao.save(post);
         return "redirect:/posts/create/all-post";
     }
@@ -100,9 +105,23 @@ public String deletePost( Model model, @PathVariable long id){
     Post post = postDao.findById(id);
     model.addAttribute("post", new Post());
     postDao.delete(post);
-    return "/posts/allPost";
+    return "redirect:/posts/create/all-post";
 
 }
+
+
+// Profile page
+//@GetMapping("/profile")
+//public String profile(Model model){
+//    User user = userDao.findById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+//        Post post = new Post();
+//        long currentUserId = (((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+//        post.getBody();
+//
+//    return "posts/profile";
+//}
+
+
 
 
 } // End of PostController
