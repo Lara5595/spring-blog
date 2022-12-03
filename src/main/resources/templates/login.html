@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="partials/partials.html :: head ('Login')" >
-  <meta charset="UTF-8">
-  <title th:text="${title}">Login</title>
+<head th:replace="partials/partialsBlog :: head ('Login')" >
 </head>
 <body>
-<nav th:replace="partials/partialsBeforeLogin.html :: bootstrap-nav2"></nav>
+<nav th:replace="partials/partialsBlog :: bootstrap-nav"></nav>
 
 <h1>Log In</h1>
 <div th:if="${param.error}">
@@ -14,52 +12,56 @@
 <div th:if="${param.logout}">
   You have been logged out.
 </div>
-<!--<form th:action="@{/login}" method="post">-->
-<!--  <label for="username">Username</label>-->
-<!--  <input id="username" name="username" type="text">-->
-<!--  <label for="password">Password</label>-->
-<!--  <input id="password" name="password" type="password">-->
-<!--  <input type="submit" value="Log In">-->
+<form th:action="@{/login}" method="post">
+  <label for="username">Username</label>
+  <input id="username" name="username" type="text">
+  <label for="password">Password</label>
+  <input id="password" name="password" type="password">
+  <input type="submit" value="Log In">
 
 
 
-  <form th:action="@{/login}" method="post">
-    <!-- Email input -->
-    <div class="form-outline mb-4 mt-5">
-      <label class="form-label" for="form2Example1">UserName</label>
-      <input type="text" name="username" id="form2Example1" class="form-control" />
-    </div>
+<!--  <form th:action="@{/login}" method="post">-->
+<!--    &lt;!&ndash; Email input &ndash;&gt;-->
+<!--    <div class="form-outline mb-4 mt-5">-->
+<!--      <label class="form-label" for="form2Example1">UserName</label>-->
+<!--      <input type="text" name="username" id="form2Example1" class="form-control" />-->
+<!--    </div>-->
 
-    <!-- Password input -->
-    <div class="form-outline mb-4">
-      <label class="form-label" for="form2Example2">Password</label>
-      <input type="password" name="password" id="form2Example2" class="form-control" />
-    </div>
+<!--    &lt;!&ndash; Password input &ndash;&gt;-->
+<!--    <div class="form-outline mb-4">-->
+<!--      <label class="form-label" for="form2Example2">Password</label>-->
+<!--      <input type="password" name="password" id="form2Example2" class="form-control" />-->
+<!--    </div>-->
 
-    <!-- 2 column grid layout for inline styling -->
-    <div class="row mb-4">
-      <div class="col d-flex justify-content-center">
-        <!-- Checkbox -->
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-          <label class="form-check-label" for="form2Example31"> Remember me </label>
-        </div>
-      </div>
+<!--    &lt;!&ndash; 2 column grid layout for inline styling &ndash;&gt;-->
+<!--    <div class="row mb-4">-->
+<!--      <div class="col d-flex justify-content-center">-->
+<!--        &lt;!&ndash; Checkbox &ndash;&gt;-->
+<!--        <div class="form-check">-->
+<!--          <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />-->
+<!--          <label class="form-check-label" for="form2Example31"> Remember me </label>-->
+<!--        </div>-->
+<!--      </div>-->
 
-      <div class="col">
-        <!-- Simple link -->
-        <a href="#!">Forgot password?</a>
-      </div>
-    </div>
+<!--      <div class="col">-->
+<!--        &lt;!&ndash; Simple link &ndash;&gt;-->
+<!--        <a href="#!">Forgot password?</a>-->
+<!--      </div>-->
+<!--    </div>-->
 
-    <!-- Submit button -->
-    <button type="submit" value="Log in" class="btn btn-primary btn-block mb-4">Log in</button>
+<!--    &lt;!&ndash; Submit button &ndash;&gt;-->
+<!--    <button type="submit" value="Log in" class="btn btn-primary btn-block mb-4">Log in</button>-->
 
-    <!-- Register buttons -->
-    <div class="text-center">
-      <p>Not a member? <a href="/register">Register</a></p>
+<!--    &lt;!&ndash; Register buttons &ndash;&gt;-->
+<!--    <div class="text-center">-->
+<!--      <p>Not a member? <a href="/register">Register</a></p>-->
 
-  </form>
+<!--      -->
+<!--  </form>-->
+
+
+
 
 </body>
 </html>

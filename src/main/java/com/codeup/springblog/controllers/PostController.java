@@ -4,6 +4,7 @@ import com.codeup.springblog.models.Post;
 import com.codeup.springblog.models.User;
 import com.codeup.springblog.repositories.PostRepository;
 import com.codeup.springblog.repositories.UserRepository;
+import com.codeup.springblog.services.EmailService;
 import com.codeup.springblog.services.Utils;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,15 +25,16 @@ public class PostController {
 
     private final UserRepository userDao;
 
+    private final EmailService emailService;
 
-    public PostController(PostRepository postDao, UserRepository userDao) {
+
+    public PostController(PostRepository postDao, UserRepository userDao, EmailService emailService) {
         this.postDao = postDao;
         this.userDao = userDao;
+        this.emailService = emailService;
     }
 
-
-
-//    Home Page
+    //    Home Page
     @GetMapping()
     public String home(){
         return "posts/homePage";
@@ -58,6 +60,7 @@ public class PostController {
         User user = Utils.currentUser();
         post.setUser(user);
         postDao.save(post);
+        emailService.prepareAndSend(user, post.getTitle(), post.getBody());
         return "redirect:/posts/create/all-post";
     }
 

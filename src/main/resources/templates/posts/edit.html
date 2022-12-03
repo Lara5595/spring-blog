@@ -1,13 +1,27 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head th:replace="partials/partials.html :: head ('edit')" >
     <meta charset="UTF-8">
     <title th:text="${title}">edit</title>
 <body>
+<!--This gets the users info that you are using -->
+<div sec:authorize="isAuthenticated()">
+    This content is only shown to authenticated users.
+
+    User ID: <span th:text="${#authentication.principal.id}"/>
+    Username: <span th:text="${#authentication.principal.username}"/>
+    Email: <span th:text="${#authentication.principal.email}"/>
+</div>
+
 <nav th:replace="partials/partials.html :: bootstrap-nav"></nav>
 
 
 <h1>Edit</h1>
+
+
+
+
 <fieldset class="postMiddleForm">
     <legend th:replace="partials/partials.html :: bootstrap-jumbotron"></legend>
     <form th:action="@{|/posts/${post.id}/edit|}" method="post" th:object="${post}">
