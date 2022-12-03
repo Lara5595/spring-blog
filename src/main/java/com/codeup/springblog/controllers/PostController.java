@@ -113,16 +113,6 @@ public String deletePost( Model model, @PathVariable long id){
 }
 
 
-// Profile page
-//@GetMapping("/profile")
-//public String profile(Model model){
-//    User user = userDao.findById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
-//        Post post = new Post();
-//        long currentUserId = (((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
-//        post.getBody();
-//
-//    return "posts/profile";
-//}
 
 
 
