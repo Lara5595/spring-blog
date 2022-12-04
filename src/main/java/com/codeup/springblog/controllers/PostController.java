@@ -98,10 +98,7 @@ public class PostController {
 
 
 
-//    Delete button
-
-
-
+//    This is the delete method
 
 @GetMapping("/{id}/delete")
 public String deletePost( Model model, @PathVariable long id){
@@ -123,4 +120,3 @@ public String deletePost( Model model, @PathVariable long id){
 
 
 
-// Made some changes
